@@ -1,0 +1,66 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PortableAudioPlayerAssistant.Context.Library.MediaLibraryView">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid>
+      <DockPanel Margin="10">
+        <TextBlock Text="Device: " DockPanel.Dock="Left"/>
+        <Button DockPanel.Dock="Right" Command="{Binding ConfigureSelectedDrive}">
+          Configure
+        </Button>
+        <ComboBox Items="{Binding StorageManager.Drives}" SelectedItem="{Binding StorageManager.SelectedDrive}"
+                  Margin="5 0">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Name}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+      </DockPanel>
+    </Grid>
+    
+    <Grid Grid.Row="1">
+      <Button HotKey="A" Command="{Binding AddSelectedSongToCurrentPlaylist}" IsVisible="False"/>
+      <DataGrid Items="{Binding StorageManager.SelectedDrive.SongsManager.Songs}"
+                SelectedItem="{Binding SelectedSong, Mode=TwoWay}" SelectionMode="Extended"
+                IsReadOnly="True" CanUserResizeColumns="True" CanUserReorderColumns="True" CanUserSortColumns="True">
+        <i:Interaction.Behaviors>
+          <ia:EventTriggerBehavior EventName="DoubleTapped">
+            <ia:CallMethodAction MethodName="PlaySelectedSong" TargetObject="{Binding}"/>
+          </ia:EventTriggerBehavior>
+        </i:Interaction.Behaviors>
+        <DataGrid.ContextMenu>
+          <ContextMenu>
+            <MenuItem Header="Add Song to Current Playlist [A]" Command="{Binding AddSelectedSongToCurrentPlaylist}"/>
+          </ContextMenu>
+        </DataGrid.ContextMenu>
+        <DataGrid.Columns>
+          <DataGridTemplateColumn Header="">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <Image Source="{Binding ImagePath, Converter={StaticResource BitmapValueConverter}}" Height="64" Width="64"/>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+          <DataGridTextColumn Header="Title" Binding="{Binding Title}" FontWeight="Medium" FontSize="14"/>
+          <DataGridTextColumn Header="Artist" Binding="{Binding Artist}"/>
+          <DataGridTextColumn Header="Album Artist" Binding="{Binding AlbumArtist}"/>
+          <DataGridTextColumn Header="Album" Binding="{Binding Album}"/>
+          <DataGridTextColumn Header="Year" Binding="{Binding Year}"/>
+          <DataGridTextColumn Header="Track" Binding="{Binding Track}"/>
+          <DataGridTextColumn Header="TrackCount" Binding="{Binding TrackCount}"/>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Grid>
+  </Grid>
+</UserControl>

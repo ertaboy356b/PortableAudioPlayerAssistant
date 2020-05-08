@@ -1,0 +1,27 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:library="clr-namespace:PortableAudioPlayerAssistant.Context.Library"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PortableAudioPlayerAssistant.Context.ShellWindowView"
+        Title="Portable Audio Player Assistant">
+  <Grid RowDefinitions="auto,*">
+
+    <Grid Grid.Row="0">
+      <!-- This Stop is Reserved -->
+    </Grid>
+    
+    <Grid Grid.Row="1" ColumnDefinitions="*,auto,400">
+      <Grid>
+        <library:MediaLibraryView Margin="4"/>
+      </Grid>
+
+      <GridSplitter Grid.Column="1" Width="10" Background="#007acc"/>
+      
+      <Grid Grid.Column="2">
+        <library:MediaPlaylistView Margin="4"/>
+      </Grid>
+    </Grid>
+  </Grid>
+</Window>

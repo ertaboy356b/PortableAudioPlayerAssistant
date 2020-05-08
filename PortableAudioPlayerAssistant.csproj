@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <AvaloniaResource Include="**\*.xaml">
+      <SubType>Designer</SubType>
+    </AvaloniaResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Remove="Context\Dialogs\RenamePlaylistView.xaml" />
+    <AvaloniaResource Remove="Context\Dialogs\StorageConfigurationEditorView.xaml" />
+    <AvaloniaResource Remove="Context\Library\MediaLibraryView.xaml" />
+    <AvaloniaResource Remove="Context\Library\MediaPlaylistView.xaml" />
+    <AvaloniaResource Remove="Context\Library\MediaStorageSelectorView.xaml" />
+    <AvaloniaResource Remove="Context\ShellWindowView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Context\Dialogs\RenamePlaylistView.xaml" />
+    <None Remove="Context\Dialogs\StorageConfigurationEditorView.xaml" />
+    <None Remove="Context\Library\MediaLibraryView.xaml" />
+    <None Remove="Context\Library\MediaPlaylistView.xaml" />
+    <None Remove="Context\Library\MediaStorageSelectorView.xaml" />
+    <None Remove="Context\ShellWindowView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.9.9" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.9.9" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.9.9" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.9" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.9.9" />
+    <PackageReference Include="MessageBox.Avalonia" Version="0.9.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Prism.Avalonia" Version="7.2.0.1428" />
+    <PackageReference Include="Prism.DryIoc.Avalonia" Version="7.2.0.1426" />
+    <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\ShellWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Library\MediaStorageSelectorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Library\MediaLibraryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Library\MediaPlaylistView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Dialogs\StorageConfigurationEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Dialogs\RenamePlaylistView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

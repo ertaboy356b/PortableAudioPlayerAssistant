@@ -1,0 +1,48 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Height="200" Width="600" WindowStartupLocation="CenterOwner"
+        x:Class="PortableAudioPlayerAssistant.Context.Dialogs.StorageConfigurationEditorView"
+        x:Name="Parent"
+        Title="Storage Configuration">
+  <i:Interaction.Behaviors>
+    <ia:DataTriggerBehavior Binding="{Binding Closed}" Value="true">
+      <ia:CallMethodAction MethodName="Close" TargetObject="{Binding ElementName=Parent}"/>
+    </ia:DataTriggerBehavior>
+  </i:Interaction.Behaviors>
+  <Grid RowDefinitions="*,auto">
+    <StackPanel>
+      <DockPanel Margin="10">
+        <TextBlock Text="Name:" DockPanel.Dock="Left" Width="90" TextAlignment="Right"/>
+        <TextBox Margin="5 0" Text="{Binding Name}"/>
+      </DockPanel>
+
+      <DockPanel Margin="10">
+        <TextBlock Text="Music Directory:" DockPanel.Dock="Left" Width="90" TextAlignment="Right"/>
+        <Button Command="{Binding LocateMusicDirectoryAsync}" DockPanel.Dock="Right">Browse</Button>
+        <TextBox Margin="5 0" Text="{Binding MusicDirectory}" IsReadOnly="True" Cursor="Hand" CaretBrush="Transparent"/>
+      </DockPanel>
+
+      <DockPanel Margin="10">
+        <TextBlock Text="Playlist Directory:" DockPanel.Dock="Left" Width="90" TextAlignment="Right"/>
+        <Button Command="{Binding LocatePlaylistDirectoryAsync}" DockPanel.Dock="Right">Browse</Button>
+        <TextBox Margin="5 0" Text="{Binding PlaylistDirectory}" IsReadOnly="True" Cursor="Hand" CaretBrush="Transparent"/>
+      </DockPanel>
+    </StackPanel>
+
+    <Grid Grid.Row="1">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+        <Button Command="{Binding Cancel}">
+          Cancel
+        </Button>
+        <Button Command="{Binding Save}" Margin="5 0">
+          Save
+        </Button>
+      </StackPanel>
+    </Grid>
+  </Grid>
+</Window>

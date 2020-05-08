@@ -1,0 +1,33 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PortableAudioPlayerAssistant.Context.Dialogs.RenamePlaylistView"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
+        Title="Rename Playlist">
+  <i:Interaction.Behaviors>
+    <ia:DataTriggerBehavior Binding="{Binding Closed}" Value="true">
+      <ia:CallMethodAction MethodName="Close" TargetObject="{Binding ElementName=Parent}"/>
+    </ia:DataTriggerBehavior>
+  </i:Interaction.Behaviors>
+  <Grid RowDefinitions="auto,auto" Margin="10">
+
+    <DockPanel>
+      <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center">Playlist Name: </TextBlock>
+      <TextBox Margin="5 0" Text="{Binding Name}" Width="200"/>
+    </DockPanel>
+
+    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="5 5 5 0">
+      <Button Command="{Binding Cancel}">
+        Cancel
+      </Button>
+      <Button Command="{Binding Save}" Margin="5 0">
+        Save
+      </Button>
+    </StackPanel>
+  </Grid>
+</Window>

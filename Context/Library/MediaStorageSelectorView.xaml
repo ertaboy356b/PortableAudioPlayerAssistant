@@ -1,0 +1,50 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icon="icon"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Name="Parent"
+             x:Class="PortableAudioPlayerAssistant.Context.Library.MediaStorageSelectorView">
+  <ItemsControl Items="{Binding StorageManager.Drives}" Margin="10">
+    <ItemsControl.ItemTemplate>
+      <DataTemplate>
+        <StackPanel>
+          <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
+          <TextBlock Text="Library" Margin="20 0 0 0" FontSize="14" FontWeight="Medium"/>
+          <ListBox Margin="30 0 0 0" BorderThickness="0" SelectedItem="{Binding DataContext.SelectedDriveDummy, ElementName=Parent}">
+            
+            <ListBoxItem>
+              <i:Interaction.Behaviors>
+                <ia:EventTriggerBehavior EventName="PointerPressed">
+                  <ia:ChangePropertyAction PropertyName="SelectedDrive" Value="{Binding}" TargetObject="{Binding DataContext.StorageManager, ElementName=Parent}"/>
+                </ia:EventTriggerBehavior>
+              </i:Interaction.Behaviors>
+              Songs
+            </ListBoxItem>
+          </ListBox>
+
+          <Separator/>
+          <TextBlock Text="Playlists" Margin="20 0 0 0" FontSize="14" FontWeight="Medium"/>
+          <ListBox Margin="30 0 0 0" BorderThickness="0" Items="{Binding SongsManager.Playlists}"
+                   SelectedItem="{Binding DataContext.SelectedPlaylistDummy, ElementName=Parent}">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <ListBoxItem>
+                  <i:Interaction.Behaviors>
+                    <ia:EventTriggerBehavior EventName="PointerPressed">
+                      <ia:ChangePropertyAction PropertyName="SelectedPlaylist" Value="{Binding}" TargetObject="{Binding DataContext.StorageManager, ElementName=Parent}"/>
+                    </ia:EventTriggerBehavior>
+                  </i:Interaction.Behaviors>
+                  <TextBlock Text="{Binding Name}"/>
+                </ListBoxItem>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </StackPanel>
+      </DataTemplate>
+    </ItemsControl.ItemTemplate>
+  </ItemsControl>
+</UserControl>
