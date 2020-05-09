@@ -14,7 +14,7 @@
 
     <Grid>
       <DockPanel Margin="10">
-        <TextBlock Text="Playlist: " DockPanel.Dock="Left"/>
+        <TextBlock Classes="Label" Text="Playlist: " VerticalAlignment="Center" DockPanel.Dock="Left"/>
 
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
           <Button Command="{Binding Rename}">

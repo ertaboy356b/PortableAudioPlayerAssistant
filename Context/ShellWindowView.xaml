@@ -5,19 +5,36 @@
         xmlns:library="clr-namespace:PortableAudioPlayerAssistant.Context.Library"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="PortableAudioPlayerAssistant.Context.ShellWindowView"
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        Classes="Main"
+        HasSystemDecorations="False"
+        x:Name="Parent"
         Title="Portable Audio Player Assistant">
-  <Grid RowDefinitions="auto,*">
+  <Grid RowDefinitions="30,auto,*">
 
-    <Grid Grid.Row="0">
+    <Grid x:Name="TitleBar" Grid.Row="0" Classes="TitleBar">
+      <TextBlock Classes="TitleBarText" Text="{Binding Title, ElementName=Parent}"/>
+      <Button Classes="TitleBarClose">
+        <i:Interaction.Behaviors>
+          <ia:EventTriggerBehavior EventName="Click">
+            <ia:CallMethodAction MethodName="Close" TargetObject="{Binding ElementName=Parent}"/>
+          </ia:EventTriggerBehavior>
+        </i:Interaction.Behaviors>
+        X
+      </Button>
+    </Grid>
+    
+    <Grid Grid.Row="1">
       <!-- This Stop is Reserved -->
     </Grid>
     
-    <Grid Grid.Row="1" ColumnDefinitions="*,auto,400">
+    <Grid Grid.Row="2" ColumnDefinitions="*,auto,400">
       <Grid>
         <library:MediaLibraryView Margin="4"/>
       </Grid>
 
-      <GridSplitter Grid.Column="1" Width="10" Background="#007acc"/>
+      <GridSplitter Grid.Column="1"/>
       
       <Grid Grid.Column="2">
         <library:MediaPlaylistView Margin="4"/>

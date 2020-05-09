@@ -6,6 +6,61 @@
         <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
         <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+
+      <Style Selector="Button">
+        <Setter Property="MinWidth" Value="50"/>
+        <Setter Property="Background" Value="#95a5a6"/>
+        <Setter Property="Foreground" Value="#2c3e50"/>
+        <Setter Property="FontSize" Value="14"/>
+      </Style>
+
+      <Style Selector="Window">
+        <Setter Property="Background" Value="#ecf0f1"/>
+        <Setter Property="Foreground" Value="#2c3e50"/>
+      </Style>
+
+      <Style Selector="Grid.TitleBar">
+        <Setter Property="Background" Value="#7f8c8d"/>
+      </Style>
+
+      <Style Selector="TextBlock.TitleBarText">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="#ecf0f1"/>
+      </Style>
+
+      <Style Selector="Button.TitleBarClose">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="#ecf0f1"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+      </Style>
+
+      <Style Selector="GridSplitter">
+        <Setter Property="Background" Value="#2c3e50"/>
+        <Setter Property="Width" Value="6"/>
+      </Style>
+
+      <Style Selector="ComboBox">
+        <Setter Property="Background" Value="#ecf0f1"/>
+      </Style>
+
+      <Style Selector="ComboBox > DropDown">
+        <Setter Property="Background" Value="#ecf0f1"/>
+      </Style>
+
+      <Style Selector="TextBlock.Label">
+        <Setter Property="Foreground" Value="#2c3e50"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="16"/>
+      </Style>
+      
     </Application.Styles>
 
   <Application.Resources>
