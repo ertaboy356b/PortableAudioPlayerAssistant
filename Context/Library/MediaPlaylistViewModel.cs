@@ -1,5 +1,7 @@
-﻿using MessageBox.Avalonia;
+﻿using DynamicData;
+using MessageBox.Avalonia;
 using PortableAudioPlayerAssistant.Context.Dialogs;
+using PortableAudioPlayerAssistant.Services.MediaPlayer;
 using PortableAudioPlayerAssistant.Services.StorageManager.Model;
 using PortableAudioPlayerAssistant.StorageManager.Services;
 using ReactiveUI;
@@ -16,9 +18,12 @@ namespace PortableAudioPlayerAssistant.Context.Library
 {
     public class MediaPlaylistViewModel : ReactiveObject
     {
-        public MediaPlaylistViewModel(StorageManagerService storageManager)
+        private AudioPlayerService _audioPlayer;
+
+        public MediaPlaylistViewModel(StorageManagerService storageManager, AudioPlayerService audioPlayer)
         {
             StorageManager = storageManager;
+            _audioPlayer = audioPlayer;
         }
 
         public StorageManagerService StorageManager { get; private set; }
@@ -38,14 +43,16 @@ namespace PortableAudioPlayerAssistant.Context.Library
         {
             if (SelectedSong == null) return;
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Process.Start("explorer", SelectedSong.FilePath);
-            }
-            else
-            {
-                Console.WriteLine("Platform not supported.");
-            }
+            _audioPlayer.PlaySong(SelectedSong);
+
+            //if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            //{
+            //    Process.Start("explorer", SelectedSong.FilePath);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Platform not supported.");
+            //}
         }
 
         public void Rename()
@@ -100,6 +107,16 @@ namespace PortableAudioPlayerAssistant.Context.Library
             {
                 SelectedSong = playlist.Songs.FirstOrDefault();
             }
+        }
+
+        public void ShuffleSongs()
+        {
+            var playList = SelectedPlaylist;
+            var shuffleData = playList.Songs.Shuffle().ToList();
+
+            playList.Songs.Clear();
+            playList.Songs.AddRange(shuffleData);
+            playList.Save();
         }
     }
 }

@@ -5,6 +5,7 @@
              xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
              xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Classes="MediaPlaylist"
              x:Class="PortableAudioPlayerAssistant.Context.Library.MediaPlaylistView">
   <Grid>
     <Grid.RowDefinitions>
@@ -53,6 +54,7 @@
         <DataGrid.ContextMenu>
           <ContextMenu>
             <MenuItem Header="Remove Selected Song [D]" Command="{Binding RemoveSelectedSong}"/>
+            <MenuItem Header="Shuffle Songs" Command="{Binding ShuffleSongs}"/>
           </ContextMenu>
         </DataGrid.ContextMenu>
         <DataGrid.Columns>

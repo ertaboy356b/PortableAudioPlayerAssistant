@@ -16,7 +16,7 @@
     <AvaloniaResource Remove="Context\Dialogs\StorageConfigurationEditorView.xaml" />
     <AvaloniaResource Remove="Context\Library\MediaLibraryView.xaml" />
     <AvaloniaResource Remove="Context\Library\MediaPlaylistView.xaml" />
-    <AvaloniaResource Remove="Context\Library\MediaStorageSelectorView.xaml" />
+    <AvaloniaResource Remove="Context\Player\PlayerView.xaml" />
     <AvaloniaResource Remove="Context\ShellWindowView.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -24,7 +24,7 @@
     <None Remove="Context\Dialogs\StorageConfigurationEditorView.xaml" />
     <None Remove="Context\Library\MediaLibraryView.xaml" />
     <None Remove="Context\Library\MediaPlaylistView.xaml" />
-    <None Remove="Context\Library\MediaStorageSelectorView.xaml" />
+    <None Remove="Context\Player\PlayerView.xaml" />
     <None Remove="Context\ShellWindowView.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -33,11 +33,13 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.9.9" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.9" />
     <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.9.9" />
+    <PackageReference Include="LibVLCSharp" Version="3.4.5" />
     <PackageReference Include="MessageBox.Avalonia" Version="0.9.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Prism.Avalonia" Version="7.2.0.1428" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="7.2.0.1426" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.10" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Context\ShellWindowView.xaml">
@@ -47,11 +49,6 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Style\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Context\Library\MediaStorageSelectorView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Context\Library\MediaLibraryView.xaml">
@@ -70,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Context\Dialogs\RenamePlaylistView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Context\Player\PlayerView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

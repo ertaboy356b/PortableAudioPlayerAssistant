@@ -3,7 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using MessageBox.Avalonia;
 using PortableAudioPlayerAssistant.Services;
+using PortableAudioPlayerAssistant.Services.Dispose;
 using PortableAudioPlayerAssistant.StorageManager.Services;
+using System;
 
 namespace PortableAudioPlayerAssistant.Context
 {
@@ -39,10 +41,15 @@ namespace PortableAudioPlayerAssistant.Context
         {
             BeginMoveDrag(e);
 
-            if (WindowState == WindowState.Maximized)
-            {
-                WindowState = WindowState.Normal;
-            }
+            //if (WindowState == WindowState.Maximized)
+            //{
+            //    WindowState = WindowState.Normal;
+            //}
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            IOC.Resolve<DisposeService>().Run();
         }
 
         private void InitializeComponent()

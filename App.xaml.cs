@@ -3,6 +3,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using PortableAudioPlayerAssistant.Context;
 using PortableAudioPlayerAssistant.Services;
+using PortableAudioPlayerAssistant.Services.Dispose;
+using PortableAudioPlayerAssistant.Services.MediaPlayer;
 using PortableAudioPlayerAssistant.StorageManager.Services;
 using Prism.DryIoc;
 using Prism.Ioc;
@@ -41,6 +43,8 @@ namespace PortableAudioPlayerAssistant
             //moduleCatalog.Register<IMainService, MainService>();
 
             containerRegistry.RegisterSingleton<StorageManagerService>();
+            containerRegistry.RegisterSingleton<AudioPlayerService>();
+            containerRegistry.RegisterSingleton<DisposeService>();
         }
 
         protected override IAvaloniaObject CreateShell()

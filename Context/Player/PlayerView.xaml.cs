@@ -2,15 +2,15 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace PortableAudioPlayerAssistant.Context.Library
+namespace PortableAudioPlayerAssistant.Context.Player
 {
-    public class MediaStorageSelectorView : UserControl
+    public class PlayerView : UserControl
     {
-        public MediaStorageSelectorView()
+        public PlayerView()
         {
             this.InitializeComponent();
 
-            DataContext = IOC.Resolve<MediaStorageSelectorViewModel>();
+            DataContext = IOC.Resolve<PlayerViewModel>();
         }
 
         private void InitializeComponent()

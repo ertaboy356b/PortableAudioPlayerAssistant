@@ -7,22 +7,36 @@
         x:Class="PortableAudioPlayerAssistant.Context.ShellWindowView"
         xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
         xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        xmlns:player="clr-namespace:PortableAudioPlayerAssistant.Context.Player"
         Classes="Main"
         HasSystemDecorations="False"
         x:Name="Parent"
         Title="Portable Audio Player Assistant">
-  <Grid RowDefinitions="30,auto,*">
+  <Grid RowDefinitions="60,auto,*">
 
     <Grid x:Name="TitleBar" Grid.Row="0" Classes="TitleBar">
-      <TextBlock Classes="TitleBarText" Text="{Binding Title, ElementName=Parent}"/>
-      <Button Classes="TitleBarClose">
-        <i:Interaction.Behaviors>
-          <ia:EventTriggerBehavior EventName="Click">
-            <ia:CallMethodAction MethodName="Close" TargetObject="{Binding ElementName=Parent}"/>
-          </ia:EventTriggerBehavior>
-        </i:Interaction.Behaviors>
-        X
-      </Button>
+      <Grid ColumnDefinitions="300,*,300">
+
+        <Grid Grid.Column="0" Margin="20 0 0 0">
+          <TextBlock Classes="TitleBarText" Text="{Binding Title, ElementName=Parent}"/>
+        </Grid>
+        
+        <Grid Grid.Column="1" HorizontalAlignment="Center">
+          <!-- Player Controls -->
+          <player:PlayerView/>
+        </Grid>
+
+        <Grid Grid.Column="2">
+          <Button Classes="TitleBarClose">
+            <i:Interaction.Behaviors>
+              <ia:EventTriggerBehavior EventName="Click">
+                <ia:CallMethodAction MethodName="Close" TargetObject="{Binding ElementName=Parent}"/>
+              </ia:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+            X
+          </Button>
+        </Grid>
+      </Grid>
     </Grid>
     
     <Grid Grid.Row="1">

@@ -20,7 +20,7 @@
       </Style>
 
       <Style Selector="Grid.TitleBar">
-        <Setter Property="Background" Value="#7f8c8d"/>
+        <Setter Property="Background" Value="#95a5a6"/>
       </Style>
 
       <Style Selector="TextBlock.TitleBarText">
@@ -40,6 +40,8 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="Margin" Value="20 0"/>
       </Style>
 
       <Style Selector="GridSplitter">
@@ -60,11 +62,16 @@
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="FontSize" Value="16"/>
       </Style>
-      
+
+      <Style Selector="UserControl.MediaPlaylist">
+        <Setter Property="Background" Value="#7f8c8d"/>
+      </Style>
     </Application.Styles>
 
   <Application.Resources>
     <converter:ByteToBitmapConverter x:Key="ByteToBitmapConverter"/>
     <converter:BitmapValueConverter x:Key="BitmapValueConverter"/>
+    <converter:ReverseBooleanConverter x:Key="ReverseBooleanConverter"/>
+    <converter:TimeSpanConverter x:Key="TimeSpanConverter"/>
   </Application.Resources>
 </Application>
